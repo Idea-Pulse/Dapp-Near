@@ -1,23 +1,168 @@
-# 🏗 IdeaPulse
+# 🚀 IdeaPulse
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+> Build with AI, Grow with Community, Tokenize with DAO
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+A Web3 innovation incubation platform based on pre-issuance token crowdfunding and community DAO governance, enabling AI and token holders to jointly support project idea incubation, development, and implementation.
 
-⚙️ Built using NextJS, RainbowKit, Foundry, Wagmi, Viem, and Typescript.
+<div align="center">
+  <img src="./assests/screenshot.png" width="800" />
+</div>
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+## 📋 Project Overview
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+### Vision and Core Values
 
-## Requirements
+IdeaPulse is committed to breaking the centralized monopoly of traditional VCs, exploring new paths for innovative projects through community-driven, fully transparent processes. We're building a "Product Hunt+DAO" model where:
+
+- **Co-creating an Equal Community**: Anyone can participate equally in project building, with trusted AI Agents distributing rewards based on contributions
+- **Blockchain Ecosystem Support**: Projects in different blockchain ecosystems increase transaction volume and bring innovation
+- **Customized Agent Services**: Different AI Agents for each public chain provide tailored solutions
+- **Work Paradigm Innovation**: A revolutionary DAO allowing participants to maximize value in projects they're passionate about
+
+### Core Project Objectives
+
+- **Social Creative Entry Point**: Submit ideas by @AI Agent (Farcaster/Twitter), with AI generating structured proposals
+- **Dynamic Staking Crowdfunding**: Stake project tokens to join development, unlock stakes after task completion
+- **Project Token Economic Design**: AI Agent reserves 15-30% of tokens for ecosystem building
+- **Pre-issuance Token Crowdfunding**: Fund projects at the no-product stage through AI-generated prototypes
+- **AI+Community Co-governance**: Token holders and AI Agents jointly participate in voting decisions
+- **Anti-VC Centralization Design**: Ensuring open and transparent decision-making processes
+- **SocialFi Integration**: Building a vibrant community through social media channels
+
+## 🔍 Core Problems Solved
+
+1. **Preventing Post-Token Issuance Stagnation**
+   - Dynamic staking mechanism ensures continuous development
+   - Pre-issuance token crowdfunding with clear fund usage
+   - AI+Community co-governance maintains development momentum
+
+2. **Increasing Participation Opportunities**
+   - Low barrier idea submission through AI agents
+   - Task staking mechanism for deep community involvement
+   - Economic incentives for active governance participants
+
+3. **Empowering Communities Through Tokens**
+   - Multi-level token ecosystem with governance rights
+   - Token reservation for long-term ecosystem building
+   - SocialFi integration enhancing community engagement
+
+4. **Solving Centralization and Transparency Issues**
+   - Open fund allocation and governance processes
+   - AI-assisted decision-making enhancing decentralization
+
+5. **Lowering Entry Barriers for New Projects**
+   - Support for projects at the idea stage
+   - Token staking system for development funding
+
+6. **Improving Project Management Efficiency**
+   - AI for idea generation, proposal structuring, and task auditing
+   - Automated qualification verification and milestone tracking
+
+## 🔄 Project Flowchart
+
+```mermaid
+flowchart LR
+    %% Node definitions
+    A[User @AI Agent Submit Idea] --> B[AI Generate Project Plan + Risk Assessment]
+    B --> C[Community Discussion & Staking Vote]
+    C --> D{Threshold Passed?}
+
+    %% Branch paths
+    D -- Yes --> E[Launch Target Amount Crowdfunding]
+    D -- No --> F[Feedback Optimization Suggestions]
+    F -.-> A
+
+    %% Main path
+    E --> G[Smart Contract Locks Funds]
+    G --> H[Contributors Stake Tokens to Accept Tasks]
+    H --> I[AI Qualification Review]
+    I --> J[Milestone Development + AI Real-time Audit]
+    J --> K{Pass Agent+Community Acceptance?}
+
+    %% Acceptance branch
+    K -- Yes --> L[Release Reward Funds + Staked Tokens]
+    K -- No --> M[Initiate Community Arbitration]
+
+    %% Arbitration branch
+    M --> N{Arbitration Result?}
+    N -- Pass --> O[Task Continues Progress]
+    N -- Fail --> P[Deduct Staked Tokens\nTask Reopened]
+
+    %% Loop path
+    O --> J
+    P --> H
+
+    %% Completion path
+    L --> Q[Token Reward Distribution]
+```
+
+## 🛣️ Development Roadmap
+
+### Phase 1: AI Collaborative Creation
+- **M1: AI Core Protocol**
+  - Natural language processing for project proposal generation
+  - Technical solution feasibility analysis
+- **M2: Dynamic Staking Crowdfunding**
+  - Project token fundraising
+  - Smart contract fund locking
+- **M3: Task Market 1.0**
+  - Automated task publishing
+  - Tokenized reward distribution
+  - Social media bot integration
+
+### Phase 2: Community Governance
+- **M4: Decentralized Forum**
+  - Proposal discussion protocols
+  - Agent participation in discussions
+  - Snapshot voting integration
+- **M5: Project Self-governance Protocol**
+  - Independent AI Agents for each project
+  - Agent management dashboard
+- **M6: Governance Mechanism 1.0**
+  - Task qualification review
+  - Dynamic staking voting
+  - Anti-fraud detection
+  - Basic reputation system
+
+### Phase 3: Token Economy Deepening
+- **M7: Proposal-Driven Development**
+  - Community proposals → automated tasks
+  - Dual-token staking pools
+  - Customized reward distribution
+- **M8: Token Economic Model**
+  - Yield aggregators
+  - Cross-project token swap protocols
+  - Token leverage staking
+- **M9: SocialFi Integration**
+  - Social media progress synchronization
+  - Governance data visualization
+
+### Phase 4: Ecosystem Optimization
+- **M10: Multi-chain Collaboration Protocol**
+  - Cross-chain communication via LayerZero
+  - Multi-chain collaborative development
+  - Cross-chain token exchange gateway
+- **M11: Governance Mechanism 2.0**
+  - AI+Community dual voting
+  - Reputation-weighted system with POAP integration
+  - Governance-development automation
+- **M12: Ecosystem Optimization**
+  - AI effect evaluation
+  - Multi-language promotion generator
+  - On-chain ecosystem auditing
+
+## 🛠️ Technical Stack
+
+Built using:
+- **Smart Contracts**: Solidity, ERC-2535 Diamond Standard
+- **Development Framework**: Foundry
+- **Frontend**: Next.js 14.2.x App Router
+- **Web3 Integration**: Wagmi 2.12.x, Viem 2.21.x
+- **Authentication**: RainbowKit with SIWE
+
+## 🚀 Getting Started
+
+### Requirements
 
 Before you begin, you need to install the following tools:
 
@@ -25,56 +170,34 @@ Before you begin, you need to install the following tools:
 - Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
 - [Git](https://git-scm.com/downloads)
 
-## Quickstart
+### Quick Start
 
-To get started with IdeaPulse, follow the steps below:
-
-1. Install dependencies if it was skipped in CLI:
-
-```
-cd my-dapp-example
+1. Install dependencies:
+```bash
 yarn install
 ```
 
-2. Run a local network in the first terminal:
-
-```
+2. Run a local network:
+```bash
 yarn chain
 ```
 
-This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/foundry/foundry.toml`.
-
-3. On a second terminal, deploy the test contract:
-
-```
+3. Deploy the test contract:
+```bash
 yarn deploy
 ```
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script` to deploy the contract to the network. You can also customize the deploy script.
-
-4. On a third terminal, start your NextJS app:
-
-```
+4. Start your NextJS app:
+```bash
 yarn start
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+Visit your app on: `http://localhost:3000`
 
-Run smart contract test with `yarn foundry:test`
+## 🤝 Contributing
 
-- Edit your smart contracts in `packages/foundry/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/foundry/script`
+We welcome contributions to IdeaPulse! Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines.
 
+## 📄 License
 
-## Documentation
-
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with IdeaPulse.
-
-To know more about its features, check out our [website](https://scaffoldeth.io).
-
-## Contributing to IdeaPulse
-
-We welcome contributions to IdeaPulse!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to IdeaPulse.
+IdeaPulse is licensed under [MIT License](LICENSE).
