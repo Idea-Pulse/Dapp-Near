@@ -1,60 +1,57 @@
- AI Agent 的功能实现:
+AI Agent Function Implementation:
 
-1. AI Agent Provider (`src/providers/ai-agent.ts`):
-- 核心功能提供者,实现了:
-  - 创意提案处理
-  - 贡献者资质审核
-  - 开发进度审计
-  - 投票决策
-  - 代币经济管理
-- 配置参数包括:
-  - 代币储备比例(15-30%)
-  - 提案通过阈值
-  - 投票周期
-  - 审计间隔
+1. AI Agent Provider (src/providers/ai-agent.ts):
+	•	Core functionality provider, implementing:
+	•	Idea proposal processing
+	•	Contributor qualification review
+	•	Development progress auditing
+	•	Voting decisions
+	•	Token economy management
+	•	Configuration parameters include:
+	•	Token reserve ratio (15-30%)
+	•	Proposal approval threshold
+	•	Voting cycle
+	•	Audit interval
 
-2. 创意提案 Action (`src/actions/idea-proposal.ts`):
-- 处理用户通过社交媒体提交的创意
-- 使用 AI 生成:
-  - 技术路线
-  - 预算规划
-  - 里程碑设置
-  - 风险评估
-- 创建链上提案记录
+2. Idea Proposal Action (src/actions/idea-proposal.ts):
+	•	Processes user-submitted ideas via social media
+	•	Uses AI to generate:
+	•	Technical roadmap
+	•	Budget planning
+	•	Milestone setting
+	•	Risk assessment
+	•	Creates an on-chain proposal record
 
-3. 任务审核 Action (`src/actions/task-audit.ts`):
-- 审核贡献者资质
-- 审计开发成果
-- 评估代码质量
-- 更新链上任务状态
-- 提供改进建议
+3. Task Audit Action (src/actions/task-audit.ts):
+	•	Reviews contributor qualifications
+	•	Audits development outcomes
+	•	Evaluates code quality
+	•	Updates on-chain task status
+	•	Provides improvement suggestions
 
-4. 代币经济管理 Action (`src/actions/token-management.ts`):
-- 代币分配与释放管理
-- 支持锁定期设置
-- 支持分期释放计划
-- AI 审核代币操作
-- 执行链上代币操作
+4. Token Management Action (src/actions/token-management.ts):
+	•	Manages token allocation and release
+	•	Supports lock-up period settings
+	•	Supports vesting schedules
+	•	AI reviews token operations
+	•	Executes on-chain token transactions
 
-5. 插件配置与集成:
-- 提供标准配置接口
-- 支持 DAO 合约集成
-- 支持代币合约集成
-- 灵活的提供者/动作注册机制
+5. Plugin Configuration and Integration:
+	•	Provides standard configuration interfaces
+	•	Supports DAO contract integration
+	•	Supports token contract integration
+	•	Flexible provider/action registration mechanism
 
-主要工作流程:
+Main Workflow:
 
-1. 创意提交与评估:
-```
-用户(@AI) -> AI处理提案 -> 生成技术方案 -> 创建链上提案
-```
+1. Idea Submission and Evaluation:
 
-2. 任务执行与审核:
-```
-贡献者提交 -> AI审核资质 -> 执行任务 -> AI审计进度 -> 通过/重新分配
-```
+User (@AI) -> AI processes proposal -> Generates technical plan -> Creates on-chain proposal
 
-3. 代币管理流程:
-```
-代币操作请求 -> AI审核合规性 -> 调整参数 -> 执行链上操作
-```
+2. Task Execution and Audit:
+
+Contributor submits -> AI reviews qualification -> Executes task -> AI audits progress -> Approve/reassign
+
+3. Token Management Process:
+
+Token operation request -> AI compliance review -> Adjust parameters -> Execute on-chain operation
