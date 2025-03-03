@@ -1,6 +1,5 @@
 import { useTheme } from "next-themes";
 import { useAccount, useSwitchChain } from "wagmi";
-import { ArrowsRightLeftIcon } from "@heroicons/react/24/solid";
 import { getNetworkColor } from "~~/hooks/scaffold-eth";
 import { getTargetNetworks } from "~~/utils/scaffold-eth";
 
@@ -29,7 +28,7 @@ export const NetworkOptions = ({ hidden = false }: NetworkOptionsProps) => {
                 switchChain?.({ chainId: allowedNetwork.id });
               }}
             >
-              <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
+              <span className="material-icons text-sm align-text-bottom">swap_horiz</span>
               <span>
                 Switch to{" "}
                 <span

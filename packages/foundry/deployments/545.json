@@ -1,0 +1,11 @@
+{
+  "0x19be80E60d3F04e365f87611197196F3A2b6D5C8": "ProjectFacet",
+  "0x2ac0A4908D4e035ED21b6A3B44B9206D3f50927E": "DiamondCutFacet",
+  "0x4fED56846608C4D30dF030C79186ECa864ee77db": "ProjectTokenFacet",
+  "0x9e26ad4578228FCE355f15d2Ec4eddAAb060Cf5B": "TaskMarketFacet",
+  "0xCdD3A898fe1b3ee520A7d01C2Ac423B00a0086FF": "Diamond",
+  "0xD3696FDe7cd9FDfD42aF680096a65eA794DC88e3": "AccessControlFacet",
+  "0xF175F26d286b8cE7bd5Da58A56b7DC3034eb9ffA": "CrowdfundingFacet",
+  "0xc02cfaCa84129c2c03624820fe34eAc859b77083": "MockUSDC",
+  "networkName": "arbitrum"
+}

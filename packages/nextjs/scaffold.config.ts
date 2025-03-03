@@ -1,4 +1,4 @@
-import { flowEvmTestnet, monadTestnet } from "./utils/networks";
+import { flowEvmTestnet, monadTestnet, auroraTestnet } from "./utils/networks";
 import * as chains from "viem/chains";
 
 export type ScaffoldConfig = {
@@ -18,6 +18,7 @@ const scaffoldConfig = {
     chains.foundry,
     monadTestnet,
     flowEvmTestnet,
+    auroraTestnet,
     // Add mainnet support later
     // chains.mainnet,
   ],

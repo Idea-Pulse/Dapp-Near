@@ -4,15 +4,6 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import { getAddress } from "viem";
 import { Address } from "viem";
 import { useDisconnect } from "wagmi";
-import {
-  ArrowLeftOnRectangleIcon,
-  ArrowTopRightOnSquareIcon,
-  ArrowsRightLeftIcon,
-  CheckCircleIcon,
-  ChevronDownIcon,
-  DocumentDuplicateIcon,
-  QrCodeIcon,
-} from "@heroicons/react/24/outline";
 import { BlockieAvatar, isENS } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 import { getTargetNetworks } from "~~/utils/scaffold-eth";
@@ -48,12 +39,12 @@ export const AddressInfoDropdown = ({
   return (
     <>
       <details ref={dropdownRef} className="dropdown dropdown-end leading-3">
-        <summary tabIndex={0} className="btn btn-secondary btn-sm pl-0 pr-2 shadow-md dropdown-toggle gap-0 !h-auto">
+        <summary tabIndex={0} className="btn btn-primary btn-sm pl-0 pr-2 shadow-md dropdown-toggle gap-0 !h-auto">
           <BlockieAvatar address={checkSumAddress} size={30} ensImage={ensAvatar} />
           <span className="ml-2 mr-1">
             {isENS(displayName) ? displayName : checkSumAddress?.slice(0, 6) + "..." + checkSumAddress?.slice(-4)}
           </span>
-          <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
+          <span className="material-icons text-sm align-text-bottom ml-1">arrow_drop_down</span>
         </summary>
         <ul
           tabIndex={0}
@@ -63,11 +54,8 @@ export const AddressInfoDropdown = ({
           <li className={selectingNetwork ? "hidden" : ""}>
             {addressCopied ? (
               <div className="btn-sm !rounded-xl flex gap-3 py-3">
-                <CheckCircleIcon
-                  className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
-                  aria-hidden="true"
-                />
-                <span className=" whitespace-nowrap">Copy address</span>
+                <span className="material-icons text-sm align-text-bottom">check_circle</span>
+                <span className="whitespace-nowrap">Copy address</span>
               </div>
             ) : (
               <CopyToClipboard
@@ -80,24 +68,21 @@ export const AddressInfoDropdown = ({
                 }}
               >
                 <div className="btn-sm !rounded-xl flex gap-3 py-3">
-                  <DocumentDuplicateIcon
-                    className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
-                    aria-hidden="true"
-                  />
-                  <span className=" whitespace-nowrap">Copy address</span>
+                  <span className="material-icons text-sm align-text-bottom">content_copy</span>
+                  <span className="whitespace-nowrap">Copy address</span>
                 </div>
               </CopyToClipboard>
             )}
           </li>
           <li className={selectingNetwork ? "hidden" : ""}>
             <label htmlFor="qrcode-modal" className="btn-sm !rounded-xl flex gap-3 py-3">
-              <QrCodeIcon className="h-6 w-4 ml-2 sm:ml-0" />
+              <span className="material-icons text-sm align-text-bottom">qr_code</span>
               <span className="whitespace-nowrap">View QR Code</span>
             </label>
           </li>
           <li className={selectingNetwork ? "hidden" : ""}>
             <button className="menu-item btn-sm !rounded-xl flex gap-3 py-3" type="button">
-              <ArrowTopRightOnSquareIcon className="h-6 w-4 ml-2 sm:ml-0" />
+              <span className="material-icons text-sm align-text-bottom">open_in_new</span>
               <a
                 target="_blank"
                 href={blockExplorerAddressLink}
@@ -117,7 +102,8 @@ export const AddressInfoDropdown = ({
                   setSelectingNetwork(true);
                 }}
               >
-                <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Switch Network</span>
+                <span className="material-icons text-sm align-text-bottom">swap_horiz</span>
+                <span>Switch Network</span>
               </button>
             </li>
           ) : null}
@@ -127,7 +113,8 @@ export const AddressInfoDropdown = ({
               type="button"
               onClick={() => disconnect()}
             >
-              <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Disconnect</span>
+              <span className="material-icons text-sm align-text-bottom">logout</span>
+              <span>Disconnect</span>
             </button>
           </li>
         </ul>

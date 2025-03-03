@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.19;
 
 /**
- * @title Counters
+ * @title ProjectCounters
  * @dev Simple implementation of a counter that can be incremented, decremented, or reset
  * This replaces the OpenZeppelin Counters.sol dependency
  */
-library Counters {
+library ProjectCounters {
     struct Counter {
         uint256 _value; // default: 0
     }

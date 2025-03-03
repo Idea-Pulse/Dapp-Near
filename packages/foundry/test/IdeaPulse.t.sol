@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.19;
 // Enable ABIEncoderV2 to handle complex return types
 pragma experimental ABIEncoderV2;
 

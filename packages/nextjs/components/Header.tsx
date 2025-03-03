@@ -20,19 +20,17 @@ export const menuLinks: HeaderMenuLink[] = [
   {
     label: "Home",
     href: "/",
+    icon: <span className="material-icons text-sm align-text-bottom">home</span>,
   },
   {
     label: "Projects",
     href: "/projects",
+    icon: <span className="material-icons text-sm align-text-bottom">apps</span>,
   },
   {
     label: "Dashboard",
     href: "/dashboard",
-  },
-  {
-    label: "Debug Contracts",
-    href: "/debug",
-    icon: <BugAntIcon className="w-4 h-4" />,
+    icon: <span className="material-icons text-sm align-text-bottom">dashboard</span>,
   },
 ];
 
@@ -92,8 +90,8 @@ export const Header = () => {
   return (
     <div
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "shadow-lg backdrop-blur-lg bg-base-100/90" : "bg-transparent"
-      }`}
+        isScrolled ? "shadow-lg backdrop-blur-lg" : ""
+      } bg-indigo-100/90`}
     >
       <div className="px-4 mx-auto max-w-7xl">
         <div className="flex justify-between items-center py-3">
@@ -111,7 +109,7 @@ export const Header = () => {
               {isDrawerOpen && (
                 <ul
                   tabIndex={0}
-                  className="p-2 sm:p-4 mt-3 w-52 sm:w-60 shadow-lg backdrop-blur-lg menu menu-compact dropdown-content bg-base-100/90 rounded-box z-[100]"
+                  className="p-2 sm:p-4 mt-3 w-52 sm:w-60 shadow-lg backdrop-blur-lg menu menu-compact dropdown-content bg-indigo-100/90 rounded-box z-[100]"
                   onClick={() => {
                     setIsDrawerOpen(false);
                   }}

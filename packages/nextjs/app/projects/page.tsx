@@ -66,15 +66,36 @@ const ProjectsContent = () => {
       {/* Header Section */}
       <div className="w-full bg-gradient-to-b to-transparent from-base-200/50">
         <div className="px-4 py-8 mx-auto max-w-7xl sm:py-12">
-          <h1 className="mb-4 text-3xl font-bold sm:mb-6 sm:text-4xl animate-slide-up">
-            Explore <span className="text-primary">Projects</span>
-          </h1>
-          <p className="mb-6 max-w-3xl text-base opacity-80 delay-100 sm:mb-8 sm:text-lg animate-slide-up">
-            Discover innovative blockchain projects and contribute through funding or tasks.
-          </p>
+          <div className="relative">
+            <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl"></div>
+            <div className="absolute top-1/2 -translate-y-1/2 right-24 w-72 h-72 rounded-full bg-gradient-to-tr from-accent/30 to-primary/30 blur-xl animate-pulse"></div>
+            
+            <h1 className="mb-4 text-3xl font-bold sm:mb-6 sm:text-5xl animate-slide-up relative z-10">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary font-extrabold">Idea Pulse</span> 
+              <span className="block sm:inline"> Ecosystem</span>
+            </h1>
+            
+            <div className="relative mb-8 max-w-3xl">
+              <p className="text-base sm:text-xl leading-relaxed opacity-90 delay-100 animate-slide-up">
+                <span className="font-semibold">Where AI and community unite</span> to transform innovative ideas into 
+                <span className="relative inline-block mx-1">
+                  <span className="relative z-10">Web3 realities</span>
+                  <span className="absolute bottom-0 left-0 w-full h-2 bg-accent/30 -rotate-1"></span>
+                </span> 
+                through transparent funding and collaborative development.
+                <span className="block mt-2">
+                  Powered by intelligent <span className="text-secondary font-medium">AI Agents</span> that help curate ideas, 
+                  generate structured proposals, and facilitate community-driven governance for a truly decentralized innovation ecosystem.
+                </span>
+                <span className="block mt-2 text-sm sm:text-base italic opacity-80">
+                  Breaking traditional VC monopolies through community-powered token economics and AI-assisted project development — where every contributor is rewarded fairly based on their value creation.
+                </span>
+              </p>
+            </div>
+          </div>
 
           {/* Filters */}
-          <div className="flex flex-col gap-3 mb-6 delay-200 sm:gap-4 sm:mb-8 sm:flex-row animate-slide-up">
+          <div className="flex flex-col gap-3 mb-2 delay-200 sm:gap-8 sm:mb-4 sm:flex-row animate-slide-up">
             {/* Filter Group */}
             <div className="overflow-x-auto flex-nowrap rounded-lg shadow-md join bg-base-100">
               <button
@@ -132,7 +153,7 @@ const ProjectsContent = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className="px-4 py-8 mx-auto max-w-7xl sm:py-12">
+      <div className="px-4 pt-0 pb-8 mx-auto max-w-7xl sm:pb-12">
         <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, index) => (
             <div key={project.id} className={`animate-scale-up delay-${(index % 3) * 100}`}>

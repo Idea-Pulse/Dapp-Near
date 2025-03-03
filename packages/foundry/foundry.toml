@@ -1,23 +1,37 @@
 [profile.default]
-src = 'contracts'
-out = 'out'
-libs = ['lib']
+src = "contracts"
+out = "out"
+libs = ["lib"]
 fs_permissions = [{ access = "read-write", path = "./"}]
 via_ir = true  # Enable the new IR-based code generator
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "solidity-bytes-utils/=lib/solidity-bytes-utils/contracts/"
+]
 
 # Solidity compiler settings
 [profile.default.model_checker]
-contracts = { 'contracts/' = ['*'] }
+contracts = { contracts = ["*"] }
 
 [profile.default.compiler]
-solc_version = "0.8.27"
+solc_version = "0.8.19"
 evm_version = "london"
 optimizer = true
 optimizer_runs = 1000
 
+[profile.verify]
+solc_version = "0.8.19"
+optimizer = true
+optimizer_runs = 1000
+verifier = "blockscout"
+verifier_url = "https://evm-testnet.flowscan.io/api"
+
 [rpc_endpoints]
 default_network = "http://127.0.0.1:8545"
 localhost = "http://127.0.0.1:8545"
+flowTestnet = "https://testnet.evm.nodes.onflow.org"
+monadTestnet = "https://testnet-rpc.monad.xyz/"
+auroraTestnet = "https://testnet.aurora.dev"
 
 mainnet = "https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}"
 sepolia = "https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
@@ -38,12 +52,12 @@ scroll = "https://rpc.scroll.io"
 pgn = "https://rpc.publicgoods.network"
 pgnTestnet = "https://sepolia.publicgoods.network"
 
-
 [etherscan]
 polygonMumbai = { key = "${ETHERSCAN_API_KEY}" }
 sepolia = { key = "${ETHERSCAN_API_KEY}" }
-
-
+flowTestnet = { key = "", url = "https://evm-testnet.flowscan.io/api", chain = 545 }
+monadTestnet = { key = "", url = "https://testnet.monadexplorer.com/api", chain = 10143 }
+auroraTestnet = { key = "", url = "https://explorer.testnet.aurora.dev/api", chain = 1313161555 }
 
 [fmt]
 line_length = 120
@@ -51,8 +65,5 @@ tab_width = 4
 quote_style = "double"
 bracket_spacing = true
 int_types = "long"
-
-
-
 
 # See more config options https://book.getfoundry.sh/reference/config/overview

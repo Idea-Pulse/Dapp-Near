@@ -19,6 +19,7 @@ interface Project {
   endDate: string;
   creator: string;
   tasks: Task[];
+  participants: { address: string; contribution: number }[];
 }
 
 export const ProjectCard = ({ project }: { project: Project }) => {
@@ -34,50 +35,58 @@ export const ProjectCard = ({ project }: { project: Project }) => {
     <Link
       href={`/projects/${project.id}`}
       className="block bg-base-100 shadow-lg rounded-2xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300
-      hover:scale-[1.02] border border-base-300 hover:shadow-primary/10 h-full"
+      hover:scale-[1.02] border border-base-300 hover:border-primary/30 hover:shadow-primary/10 h-full flex flex-col"
     >
       {/* Project Header */}
-      <div className="mb-4 sm:mb-6">
-        <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-primary">{project.title}</h3>
-        <p className="text-xs sm:text-sm opacity-70 line-clamp-2">{project.description}</p>
+      <div className="mb-4 sm:mb-5">
+        <div className="flex items-start justify-between mb-2">
+          <h3 className="text-lg sm:text-xl font-bold text-primary">{project.title}</h3>
+          {daysLeft > 0 && (
+            <span className="text-xs px-2 py-1 bg-base-200 rounded-full font-medium ml-2 whitespace-nowrap">
+              {daysLeft}d left
+            </span>
+          )}
+        </div>
+        <p className="text-xs sm:text-sm opacity-80 line-clamp-2">{project.description}</p>
       </div>
 
       {/* Funding Progress */}
-      <div className="mb-4 sm:mb-6">
-        <div className="flex justify-between text-xs sm:text-sm mb-2">
+      <div className="mb-4 sm:mb-5">
+        <div className="flex justify-between text-xs sm:text-sm mb-1.5">
           <span className="font-semibold">
             {project.raisedAmount.toLocaleString()} / {project.fundingGoal.toLocaleString()} USDT
           </span>
-          <span className="opacity-70">{Math.round(progress)}%</span>
+          <span className="font-medium text-primary">{Math.round(progress)}%</span>
         </div>
-        <div className="w-full bg-base-200 rounded-full h-2">
+        <div className="w-full bg-base-200 rounded-full h-2.5 overflow-hidden">
           <div
-            className="bg-primary rounded-full h-2 transition-all duration-500"
+            className="bg-primary rounded-full h-full transition-all duration-500"
             style={{ width: `${Math.min(100, progress)}%` }}
           />
         </div>
       </div>
 
       {/* Project Stats */}
-      <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center py-3 sm:py-4 mb-4 sm:mb-6 border-y border-base-200">
-        <div>
-          <div className="text-base sm:text-lg font-bold text-secondary">{daysLeft}</div>
-          <div className="text-[10px] sm:text-xs opacity-70">Days Left</div>
-        </div>
-        <div>
-          <div className="text-base sm:text-lg font-bold text-accent">{openTasks}</div>
+      <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center py-3 sm:py-4 mb-4 sm:mb-5 border-y border-base-200 bg-base-100/50">
+        <div className="flex flex-col justify-center">
+          <div className="text-base sm:text-lg font-bold text-secondary">{openTasks}</div>
           <div className="text-[10px] sm:text-xs opacity-70">Open Tasks</div>
         </div>
-        <div>
+        <div className="flex flex-col justify-center border-x border-base-200">
           <div className="text-base sm:text-lg font-bold">{totalTasks}</div>
           <div className="text-[10px] sm:text-xs opacity-70">Total Tasks</div>
+        </div>
+        <div className="flex flex-col justify-center">
+          <div className="text-base sm:text-lg font-bold text-accent">{project.participants.length}</div>
+          <div className="text-[10px] sm:text-xs opacity-70">Backers</div>
         </div>
       </div>
 
       {/* Project Footer */}
-      <div className="flex justify-between items-center text-[10px] sm:text-xs">
-        <span className="opacity-70 truncate max-w-[120px] sm:max-w-none">
-          By {project.creator.slice(0, 6)}...{project.creator.slice(-4)}
+      <div className="flex justify-between items-center text-[10px] sm:text-xs mt-auto">
+        <span className="opacity-70 truncate max-w-[120px] sm:max-w-none flex items-center">
+          <span className="w-2 h-2 rounded-full bg-success mr-1.5 inline-block"></span>
+          {project.creator.slice(0, 6)}...{project.creator.slice(-4)}
         </span>
         <div className="flex items-center gap-1 sm:gap-2">
           {openTasks > 0 && (
@@ -95,3 +104,4 @@ export const ProjectCard = ({ project }: { project: Project }) => {
     </Link>
   );
 };
+

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.19;
 
 interface IDiamondCut {
     enum FacetCutAction {Add, Replace, Remove}
@@ -21,6 +21,8 @@ interface IDiamondCut {
 
 library LibDiamond {
     bytes32 constant DIAMOND_STORAGE_POSITION = keccak256("diamond.standard.diamond.storage");
+
+    event DiamondCut(IDiamondCut.FacetCut[] _diamondCut, address _init, bytes _calldata);
 
     struct FacetAddressAndPosition {
         address facetAddress;
@@ -88,7 +90,7 @@ library LibDiamond {
                 revert("LibDiamond: Incorrect FacetCutAction");
             }
         }
-        emit IDiamondCut.DiamondCut(_diamondCut, _init, _calldata);
+        emit DiamondCut(_diamondCut, _init, _calldata);
         initializeDiamondCut(_init, _calldata);
     }
 

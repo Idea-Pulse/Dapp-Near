@@ -22,7 +22,7 @@ export const monadTestnet = defineChain({
   blockExplorers: {
     default: {
       name: "Monad Explorer",
-      url: "https://testnet-explorer.monad.xyz",
+      url: "https://testnet.monadexplorer.com",
     },
   },
   contracts: {
@@ -33,8 +33,40 @@ export const monadTestnet = defineChain({
   },
 });
 
+export const auroraTestnet = defineChain({
+  id: 1313161555,
+  name: "Aurora Testnet",
+  network: "aurora-testnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "ETH",
+    symbol: "ETH",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://testnet.aurora.dev"],
+    },
+    public: {
+      http: ["https://testnet.aurora.dev"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Aurora Explorer",
+      url: "https://explorer.testnet.aurora.dev",
+    },
+  },
+  contracts: {
+    multicall3: {
+      address: "0xcA11bde05977b3631167028862bE2a173976CA11",
+      blockCreated: 1234,
+    },
+  },
+  testnet: true,
+});
+
 export const flowEvmTestnet = defineChain({
-  id: 12_345, // Replace with actual Flow EVM testnet chain ID
+  id: 545,
   name: "Flow EVM Testnet",
   network: "flow-evm-testnet",
   nativeCurrency: {
@@ -44,23 +76,23 @@ export const flowEvmTestnet = defineChain({
   },
   rpcUrls: {
     default: {
-      http: ["https://testnet-evm.flow.com"], // Replace with actual Flow EVM RPC URL
-      webSocket: ["wss://testnet-evm.flow.com/ws"], // Replace with actual Flow EVM WebSocket URL
+      http: ["https://testnet.evm.nodes.onflow.org"],
+      webSocket: ["wss://testnet.evm.nodes.onflow.org/ws"],
     },
     public: {
-      http: ["https://testnet-evm.flow.com"], // Replace with actual Flow EVM RPC URL
-      webSocket: ["wss://testnet-evm.flow.com/ws"], // Replace with actual Flow EVM WebSocket URL
+      http: ["https://testnet.evm.nodes.onflow.org"],
+      webSocket: ["wss://testnet.evm.nodes.onflow.org/ws"],
     },
   },
   blockExplorers: {
     default: {
       name: "Flow Explorer",
-      url: "https://testnet-explorer.flow.com", // Replace with actual Flow EVM explorer URL
+      url: "https://evm-testnet.flowscan.io",
     },
   },
   contracts: {
     multicall3: {
-      address: "0xcA11bde05977b3631167028862bE2a173976CA11", // Replace with actual Flow EVM multicall address
+      address: "0xcA11bde05977b3631167028862bE2a173976CA11",
       blockCreated: 1234,
     },
   },

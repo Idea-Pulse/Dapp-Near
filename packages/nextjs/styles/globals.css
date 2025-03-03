@@ -129,8 +129,13 @@ p {
 
 /* Custom Selection */
 ::selection {
-  background: var(--color-neon-volt);
-  color: var(--dark-background);
+  background: #1a73e8;
+  color: white;
+}
+
+::-moz-selection {
+  background: #1a73e8;
+  color: white;
 }
 
 /* Motion-Safe Animations */

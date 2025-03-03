@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
 import "./AccessControlFacet.sol";
 
 // Interface to interact with CrowdfundingFacet
@@ -164,11 +164,11 @@ contract ProjectTokenFacet {
     }
 
     // Helper functions to get data from CrowdfundingFacet
-    function getContribution(uint256 projectId, address contributor) external view returns (uint256) {
+    function getTokenContribution(uint256 projectId, address contributor) external view returns (uint256) {
         return ITokenCrowdfundingFacet(address(this)).getContribution(projectId, contributor);
     }
 
-    function getRaisedAmount(uint256 projectId) external view returns (uint256) {
+    function getTokenRaisedAmount(uint256 projectId) external view returns (uint256) {
         return ITokenCrowdfundingFacet(address(this)).getRaisedAmount(projectId);
     }
 }
