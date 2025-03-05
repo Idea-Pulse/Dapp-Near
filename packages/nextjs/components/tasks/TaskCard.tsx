@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { MouseTracker } from "~~/components/motion/MouseTracker";
+import { StatusBadge } from "../shared/StatusBadge";
 
 interface Task {
   id: string;
@@ -13,7 +14,7 @@ interface Task {
     token: string;
   };
   deadline: string;
-  status: "open" | "assigned" | "in_progress" | "completed" | "verified";
+  status: string;
   requirements: {
     skills: string[];
     experienceLevel: string;
@@ -40,19 +41,6 @@ const getDifficultyColor = (difficulty: Task["difficulty"]) => {
   }
 };
 
-const getStatusColor = (status: Task["status"]) => {
-  switch (status) {
-    case "open":
-      return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:bg-opacity-20 dark:text-blue-400";
-    case "in_progress":
-    case "assigned":
-      return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:bg-opacity-20 dark:text-purple-400";
-    case "completed":
-    case "verified":
-      return "bg-green-100 text-green-800 dark:bg-green-900 dark:bg-opacity-20 dark:text-green-400";
-  }
-};
-
 export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   const formattedDeadline = new Date(task.deadline).toLocaleDateString();
 
@@ -65,7 +53,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
               <h3 className="text-lg sm:text-xl font-bold text-content-primary">{task.title}</h3>
               <div className="flex flex-wrap gap-2 items-center">
                 <span className={`tag ${getDifficultyColor(task.difficulty)}`}>{task.difficulty}</span>
-                <span className={`tag ${getStatusColor(task.status)}`}>{task.status.replace("_", " ")}</span>
+                <StatusBadge status={task.status} size="sm" />
               </div>
             </div>
 

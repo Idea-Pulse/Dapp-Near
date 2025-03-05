@@ -1,35 +1,39 @@
 "use client";
 
 import Link from "next/link";
-import { TaskStatus } from "~~/data/mockData";
-
-interface Task {
-  id: string;
-  title: string;
-  reward: number;
-  status: TaskStatus;
-}
+import { useCrowdfunding } from "~~/hooks/useCrowdfunding";
+import { useTasks } from "~~/hooks/useTasks";
+import { LoadingSpinner } from "./LoadingSpinner";
+import { StatusBadge } from "./StatusBadge";
 
 interface Project {
   id: string;
   title: string;
   description: string;
-  fundingGoal: number;
-  raisedAmount: number;
-  endDate: string;
+  status: string;
   creator: string;
-  tasks: Task[];
-  participants: { address: string; contribution: number }[];
 }
 
-export const ProjectCard = ({ project }: { project: Project }) => {
-  const progress = (project.raisedAmount / project.fundingGoal) * 100;
-  const openTasks = project.tasks.filter(task => task.status === "open").length;
-  const totalTasks = project.tasks.length;
-  const daysLeft = Math.max(
-    0,
-    Math.ceil((new Date(project.endDate).getTime() - new Date().getTime()) / (1000 * 3600 * 24)),
-  );
+interface ProjectCardProps {
+  project: Project;
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
+  const { fundingInfo, isLoading: isLoadingFunding } = useCrowdfunding(project.id);
+  const { taskCount, isLoading: isLoadingTasks } = useTasks(project.id);
+
+  if (isLoadingFunding || isLoadingTasks) {
+    return (
+      <div className="flex justify-center items-center p-6 card bg-base-100 border border-base-300">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  const progress = fundingInfo ? (Number(fundingInfo.raisedAmount) / Number(fundingInfo.fundingGoal)) * 100 : 0;
+  const daysLeft = fundingInfo
+    ? Math.max(0, Math.ceil((Number(fundingInfo.endTime) * 1000 - Date.now()) / (1000 * 3600 * 24)))
+    : 0;
 
   return (
     <Link
@@ -51,34 +55,32 @@ export const ProjectCard = ({ project }: { project: Project }) => {
       </div>
 
       {/* Funding Progress */}
-      <div className="mb-4 sm:mb-5">
-        <div className="flex justify-between text-xs sm:text-sm mb-1.5">
-          <span className="font-semibold">
-            {project.raisedAmount.toLocaleString()} / {project.fundingGoal.toLocaleString()} USDT
-          </span>
-          <span className="font-medium text-primary">{Math.round(progress)}%</span>
+      {fundingInfo && (
+        <div className="mb-4 sm:mb-5">
+          <div className="flex justify-between text-xs sm:text-sm mb-1.5">
+            <span className="font-semibold">
+              {Number(fundingInfo.raisedAmount).toLocaleString()} / {Number(fundingInfo.fundingGoal).toLocaleString()} USDT
+            </span>
+            <span className="font-medium text-primary">{Math.round(progress)}%</span>
+          </div>
+          <div className="w-full bg-base-200 rounded-full h-2.5 overflow-hidden">
+            <div
+              className="bg-primary rounded-full h-full transition-all duration-500"
+              style={{ width: `${Math.min(100, progress)}%` }}
+            />
+          </div>
         </div>
-        <div className="w-full bg-base-200 rounded-full h-2.5 overflow-hidden">
-          <div
-            className="bg-primary rounded-full h-full transition-all duration-500"
-            style={{ width: `${Math.min(100, progress)}%` }}
-          />
-        </div>
-      </div>
+      )}
 
       {/* Project Stats */}
-      <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center py-3 sm:py-4 mb-4 sm:mb-5 border-y border-base-200 bg-base-100/50">
+      <div className="grid grid-cols-2 gap-2 sm:gap-4 text-center py-3 sm:py-4 mb-4 sm:mb-5 border-y border-base-200 bg-base-100/50">
         <div className="flex flex-col justify-center">
-          <div className="text-base sm:text-lg font-bold text-secondary">{openTasks}</div>
-          <div className="text-[10px] sm:text-xs opacity-70">Open Tasks</div>
-        </div>
-        <div className="flex flex-col justify-center border-x border-base-200">
-          <div className="text-base sm:text-lg font-bold">{totalTasks}</div>
+          <div className="text-base sm:text-lg font-bold text-secondary">{taskCount?.toString() || "0"}</div>
           <div className="text-[10px] sm:text-xs opacity-70">Total Tasks</div>
         </div>
         <div className="flex flex-col justify-center">
-          <div className="text-base sm:text-lg font-bold text-accent">{project.participants.length}</div>
-          <div className="text-[10px] sm:text-xs opacity-70">Backers</div>
+          <StatusBadge status={project.status} size="sm" />
+          <div className="text-[10px] sm:text-xs opacity-70 mt-1">Status</div>
         </div>
       </div>
 
@@ -89,12 +91,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           {project.creator.slice(0, 6)}...{project.creator.slice(-4)}
         </span>
         <div className="flex items-center gap-1 sm:gap-2">
-          {openTasks > 0 && (
-            <span className="px-1.5 sm:px-2.5 py-1 bg-accent/10 text-accent rounded-full text-[10px] sm:text-xs font-medium whitespace-nowrap">
-              Tasks Available
-            </span>
-          )}
-          {progress < 100 && (
+          {!fundingInfo?.hasMetFundingGoal && (
             <span className="px-1.5 sm:px-2.5 py-1 bg-primary/10 text-primary rounded-full text-[10px] sm:text-xs font-medium whitespace-nowrap">
               Funding Open
             </span>
